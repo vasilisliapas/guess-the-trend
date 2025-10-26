@@ -1,6 +1,9 @@
 import requests
 import random
 from datetime import datetime, timedelta
+from flask import Flask,  render_template
+
+app = Flask(__name__)
 
 # CoinGecko API configuration
 COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3"
@@ -90,3 +93,10 @@ class BitcoinGame:
 game = BitcoinGame()
 
 print(game.generate_question())
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
