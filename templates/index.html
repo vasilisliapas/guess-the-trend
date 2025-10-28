@@ -18,10 +18,13 @@
             Bitcoin price. Predict if Bitcoin was rising or falling during
             that month!
         </p>
-        <button type="button" onclick='document.getElementById("demo").innerHTML = "Game Started!"'>Start New Game</button>
+        <button id="start-game">Start New Game</button>
+        <div id="game-message"></div>
     </main>
 
     <footer>
         <p>&copy Data provided by CoinGecko</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='js/game.js')}}"></script>
 </body>
