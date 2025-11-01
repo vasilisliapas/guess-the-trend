@@ -1,6 +1,20 @@
 
-document.getElementById('start-game').addEventListener('click', function() {this.innerText = "Game started";});
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Game loaded!');
 
-document.getElementById('start-game').addEventListener('click', function() {
-  document.getElementById('game-message').innerHTML = "<h1>Game started<h1/>";
+  const startBtn = document.getElementById('start-game');
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const gameScreen = document.getElementById('game-screen');
+
+  startBtn.addEventListener('click', function() {
+    console.log('Start game clicked');
+    welcomeScreen.style.display = 'none';
+    gameScreen.style.display = 'block';
+    loadNewQuestion();
+  });
+
 });
+
+function loadNewQuestion() {
+  console.log('Loading new question...');
+};

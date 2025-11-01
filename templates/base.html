@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Bitcoin Prediction Game</h1>
+        <span>Score: 0/0</span>
+        <button>Reset Score</button>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy Data provided by CoinGecko</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/game.js')}}"></script>
+</body>

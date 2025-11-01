@@ -1,9 +1,10 @@
 import requests
 import random
 from datetime import datetime, timedelta
-from flask import Flask,  render_template
+from flask import Flask, render_template, session
 
 app = Flask(__name__)
+app.secret_key = 'bitcoin_game_secret_key_dummy'
 
 # CoinGecko API configuration
 COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3"
@@ -96,7 +97,20 @@ print(game.generate_question())
 
 @app.route('/')
 def index():
+    if 'score' not in session:
+        session['score'] = 0
+    if 'games_played' not in session:
+        session['games_played'] = 0
+
     return render_template('index.html')
+
+@app.route('/get-question')
+def get_question():
+    question_data = game.generate_question()
+
+    session['current_answer'] = question_data['correct_answer']
+
+    return question_data
 
 if __name__ == '__main__':
     app.run(debug=True)

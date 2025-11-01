@@ -1,30 +1,30 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<head>
-    <title>Bitcoin Minigame</title>
-</head>
-<body>
-    <header>
-        <h1>Bitcoin Prediction Game</h1>
-        <span>Score: 0/0</span>
-        <button>Reset Score</button>
-    </header>
+{% block title %}Bitcoin Minigame - Home{% endblock %}
 
-    <main>
-        <h1>Bitcoin Prediction Challenge</h1>
-        <h3>How to play:</h3>
-        <p id="demo">
-            You will be shown a random 1-month period from the last year's 
-            Bitcoin price. Predict if Bitcoin was rising or falling during
-            that month!
-        </p>
-        <button id="start-game">Start New Game</button>
-        <div id="game-message"></div>
-    </main>
+{% block content %}
+<div id="welcome-screen">
+    <h2>Welcome to Bitcoin Prediction Game!</h1>
+    <h3>How to play:</h3>
+    <p id="demo">
+        You will be shown a random 1-month period from the last year's 
+        Bitcoin price. Predict if Bitcoin was rising or falling during
+        that month!
+    </p>
+    <button id="start-game">Start New Game</button>
+</div>
 
-    <footer>
-        <p>&copy Data provided by CoinGecko</p>
-    </footer>
+<div id="game-screen" style="display: none">
+    <!-- <div id="loading">Loading Bitcoin data...</div> -->
+    <!-- <div id="question-content" style="display: none;"> -->
+    <div id="question-content">
+        <p>Period: <span id="date-range"></span></p>
+        <h4>Was Bitcoin Rising or falling?</h4>
+        <button class="answer-btn" data-answer="rising">Rising</button>
+        <button class="answer-btn" data-answer="falling">Falling</button>
+    </div>
+</div>
 
-    <script src="{{ url_for('static', filename='js/game.js')}}"></script>
-</body>
+
+<div id="game-message"></div>
+{% endblock %}
