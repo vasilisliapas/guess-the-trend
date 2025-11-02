@@ -13,8 +13,34 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNewQuestion();
   });
 
+  document.querySelectorAll('.answer-btn').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const answer = this.dataset.answer;
+      console.log(this.dataset)
+      console.log('User chose', answer);
+      submitAnswer(answer);
+    });
 });
 
-function loadNewQuestion() {
+});
+
+async function loadNewQuestion() {
   console.log('Loading new question...');
+  const response = await fetch('/get-question');
+  const data = await response.json();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('question-content').style.display = 'block';
+  document.getElementById('date-range').textContent =
+    // `${data.start_date} - ${data.end_date}`;
+  data.start_date + " - " + data.end_date;
+};
+
+async function submitAnswer(userAnswer) {
+  const response = await fetch('/submit-answer', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ answer: userAnswer})
+  });
+  const result = await response.json();
+  console.log(result)
 };
