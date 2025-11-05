@@ -25,6 +25,28 @@
     </div>
 </div>
 
+<div id="result-screen" style="display: none;">
+    <div id="victory-content" style="display: none;">
+        <h1>VICTORY!</h1>
+        <p>Your prediction is correct!</p>
+    </div>
 
-<div id="game-message"></div>
+    <div id="defeat-content" style="display: none;">
+        <h1>DEFEAT</h1>
+        <p>Your prediction is wrong...</p>
+    </div>
+
+    <div id="result-details">
+        <div>
+            <h3>Result Details</h3>
+            <p id="result-explanation"></p>
+            <p id="price-change-info"></p>
+        </div>
+
+        <div>
+            <button id="play-again">Play Again</button>
+            <button id="back-to-menu">Back to Menu</button>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -119,9 +119,18 @@ def get_question():
 @app.route('/submit-answer', methods=['POST'])
 def submit_answer():
     user_answer = request.json.get('answer', '')
-    print(user_answer)
+    correct_answer = session.get('current_answer', '')
+    question_data = session.get('current_question', '')
 
-    return jsonify({'answer': user_answer})
+    is_correct = user_answer == correct_answer
+
+    response_data = {
+        'correct': is_correct,
+        'correct_answer': correct_answer,
+        'price_change_percent': question_data['price_change_percent']
+    }
+
+    return jsonify(response_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
