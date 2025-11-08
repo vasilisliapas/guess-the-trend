@@ -3,7 +3,8 @@
 {% block title %}Bitcoin Minigame - Home{% endblock %}
 
 {% block content %}
-<div id="welcome-screen">
+<!-- Welcome Screen -->
+<div id="welcome-screen" class="screen">
     <h2>Welcome to Bitcoin Prediction Game!</h1>
     <h3>How to play:</h3>
     <p id="demo">
@@ -14,7 +15,8 @@
     <button id="start-game">Start New Game</button>
 </div>
 
-<div id="game-screen" style="display: none">
+<!-- Game Screen -->
+<div id="game-screen" class="screen">
     <div id="loading">Loading Bitcoin data...</div>
     <div id="question-content" style="display: none;">
     <!-- <div id="question-content"> -->
@@ -25,7 +27,8 @@
     </div>
 </div>
 
-<div id="result-screen" style="display: none;">
+<!-- Result Screen -->
+<div id="result-screen" class="screen">
     <div id="victory-content" style="display: none;">
         <h1>VICTORY!</h1>
         <p>Your prediction is correct!</p>

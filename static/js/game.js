@@ -3,21 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Game loaded!');
 
   const startBtn = document.getElementById('start-game');
-  const welcomeScreen = document.getElementById('welcome-screen');
-  const gameScreen = document.getElementById('game-screen');
+
+  showScreen('welcome-screen');
 
   startBtn.addEventListener('click', function() {
     console.log('Start game clicked');
-    welcomeScreen.style.display = 'none';
-    gameScreen.style.display = 'block';
+    showScreen('game-screen');
     loadNewQuestion();
   });
 
   document.querySelectorAll('.answer-btn').forEach(btn => {
     btn.addEventListener('click', function(){
       const answer = this.dataset.answer;
-      console.log(this.dataset)
-      console.log('User chose', answer);
       submitAnswer(answer);
     });
 });
@@ -48,8 +45,7 @@ async function submitAnswer(userAnswer) {
 };
 
 function showResult(result, userAnswer) {
-  document.getElementById('game-screen').style.display = 'none';
-  document.getElementById('result-screen').style.display = 'block'
+  showScreen('result-screen');
   
   let explanation;
   if (result.correct) {
@@ -59,7 +55,7 @@ function showResult(result, userAnswer) {
     document.getElementById('defeat-content').style.display = 'block';
     explanation = `Incorrect. Bitcoin was actually ${result.correct_answer}.`;
   }
-  console.log(explanation)
+
   document.getElementById('result-explanation').textContent = explanation;
 
   const changeDirection = result.price_change_percent > 0 ? 'increased' : 'descreased';
@@ -69,5 +65,11 @@ function showResult(result, userAnswer) {
   
 }
 
-//  Maybe create a showScreen function to better handle which screen to show 
-// as the next step.
+function showScreen(screenId) {
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+  document.getElementById(screenId).classList.add('active');
+}
+
+// Next Step: Implement the Play again and Back to Menu Buttons
