@@ -124,13 +124,33 @@ def submit_answer():
 
     is_correct = user_answer == correct_answer
 
+    session['games_played'] += 1
+    if is_correct:
+        session['score'] += 1
+
     response_data = {
         'correct': is_correct,
         'correct_answer': correct_answer,
-        'price_change_percent': question_data['price_change_percent']
+        'price_change_percent': question_data['price_change_percent'],
+        'games_played': session['games_played'],
+        'score': session['score']
     }
 
     return jsonify(response_data)
+
+@app.route('/reset-score')
+def reset_score():
+    session['games_played'] = 0
+    session['score'] = 0
+
+    response_data = {
+        'score': session['score'],
+        'games_played': session['games_played'],
+        'success': True
+    }
+
+    return jsonify(response_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
