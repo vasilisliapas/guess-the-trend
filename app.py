@@ -108,10 +108,17 @@ def index():
 def get_question():
     question_data = game.generate_question()
 
+    if not question_data:
+        return jsonify({
+            'success': False,
+            'error': 'Unable to generate question, Please try again.'
+        })
+
     session['current_answer'] = question_data['correct_answer']
     session['current_question'] = question_data
 
     return jsonify({
+        'success': True,
         'start_date': question_data['start_date'],
         'end_date': question_data['end_date']
     })

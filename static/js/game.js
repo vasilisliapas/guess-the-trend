@@ -46,6 +46,11 @@ async function loadNewQuestion() {
   try {
     const response = await fetch('/get-question');
     const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.error || 'Failed to load question');
+    }
+    
     displayQuestion(data);
 
   } catch(error) {
