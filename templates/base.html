@@ -7,8 +7,10 @@
 <body>
     <header>
         <h1>Bitcoin Prediction Game</h1>
-        <span id="score-display">Score: {{session.get('score', 0)}}/{{session.get('games_played', 0)}}</span>
-        <button id="reset-score">Reset Score</button>
+        <div class="stats">
+            <span id="score-display">Score: {{session.get('score', 0)}}/{{session.get('games_played', 0)}}</span>
+            <button id="reset-score">Reset Score</button>
+        </div>
     </header>
 
     <main>

@@ -1,3 +1,68 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+
+/* Header styles */
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 30px;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#welcome-screen, #game-screen, #result-screen, #error-screen {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-align: center;
+}
+
+button {
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.answer-btn {
+    display: inline-block;
+    margin: 10px;
+    min-width: 150px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .screen {
     display: none;
 }
